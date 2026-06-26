@@ -206,6 +206,7 @@ h3 {
 
 .problem-section,
 .process-section,
+.assets-section,
 .value-section,
 .features-section,
 .contact-section {
@@ -324,6 +325,84 @@ h3 {
   margin: 0;
   color: var(--muted);
   font-size: 0.98rem;
+}
+
+.assets-section {
+  background: #ffffff;
+}
+
+.assets-title {
+  max-width: 1040px;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.assets-title .eyebrow {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 18px;
+  color: var(--amber);
+}
+
+.assets-title .eyebrow::after {
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 58px;
+  height: 3px;
+  background: var(--amber);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.assets-title h2 {
+  max-width: 1020px;
+  margin: 0 auto 12px;
+  font-size: clamp(1.7rem, 2.8vw, 3rem);
+}
+
+.assets-title p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px 24px;
+}
+
+.asset-grid figure {
+  margin: 0;
+}
+
+.asset-grid img {
+  width: 100%;
+  aspect-ratio: 1.55;
+  object-fit: cover;
+}
+
+.asset-grid figcaption {
+  position: relative;
+  margin-top: 12px;
+  padding-bottom: 12px;
+  color: var(--primary-900);
+  font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.asset-grid figcaption::after {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 44px;
+  height: 2px;
+  background: var(--amber);
+  content: "";
+  transform: translateX(-50%);
 }
 
 .value-section {
@@ -558,10 +637,15 @@ h3 {
 
   .problem-section,
   .process-section,
+  .assets-section,
   .value-section,
   .features-section,
   .contact-section {
     grid-template-columns: 1fr;
+  }
+
+  .asset-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .process-line {
@@ -621,6 +705,7 @@ h3 {
   .field-strip,
   .problem-section,
   .process-section,
+  .assets-section,
   .value-section,
   .features-section,
   .contact-section,
@@ -641,4 +726,319 @@ h3 {
   .contact-copy p {
     font-size: 1rem;
   }
+
+  .asset-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* --- ESTILOS DEL VIDEO FULLSCREEN --- */
+/* --- ESTILOS DEL VIDEO FULLSCREEN --- */
+.fullscreen-video {
+  width: 100%;
+  /* Bajamos el alto para recortar la parte superior e inferior */
+  height: 80vh; 
+  position: relative;
+  background-color: #000;
+  overflow: hidden;
+}
+
+#aero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Centra el recorte para que no pierdas lo importante del video */
+  object-position: center center; 
+}
+
+.video-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#aero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que no se deforme ni queden bordes negros */
+}
+
+/* Capa de sombra para el final del video */
+/* Capa oscura que aparece al final */
+.video-overlay {
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Esto le da el tono oscuro (70% negro) */
+  z-index: 5; /* Asegura que tape al video */
+  transition: opacity 0.4s ease;
+}
+
+/* Oculta elementos suavemente */
+.hidden {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+/* Aseguramos que el botón de play quede por ENCIMA de la capa oscura */
+.center-btn {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  z-index: 10; /* Tiene que ser mayor que el z-index del overlay (5) */
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+/* Botón central de Play */
+.center-btn {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+}
+.center-btn:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+.center-btn svg {
+  width: 40px;
+  height: 40px;
+  margin-left: 6px; /* Centra visualmente el triángulo */
+}
+
+/* --- Ajuste perfecto para el botón de volumen --- */
+.bottom-right-btn {
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px; /* Un tamaño un poco más delicado */
+  height: 44px;
+  background: rgba(0, 0, 0, 0.5); /* Fondo más oscuro para que contraste con el video */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.bottom-right-btn svg {
+  width: 22px;
+  height: 22px;
+  color: white;
+}
+
+/* Fundamental: que el ícono oculto NO ocupe espacio físico en el botón */
+.bottom-right-btn svg.hidden {
+  display: none !important;
+}
+
+/* El botón central (Play) también ajustado para que el ícono no se vea descentrado */
+.center-btn svg {
+  width: 36px;
+  height: 36px;
+  margin-left: 4px; /* Compensa visualmente la forma del triángulo de play */
+}
+
+/* Video behavior refinements */
+.fullscreen-video {
+  width: 100%;
+  /* Agregamos padding para crear los márgenes vacíos alrededor */
+  padding: 40px 5%; /* 40px arriba/abajo, 5% a los lados */
+  height: 72vh; 
+  background-color: transparent; /* Fondo transparente para que se vea el espacio vacío */
+  overflow: visible; /* Permitimos que se vea el fondo de la web fuera del video */
+}
+
+.video-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 24px; /* Bordes redondeados para el toque moderno */
+  overflow: hidden; /* Esto mantiene el video contenido dentro de los bordes redondeados */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* Sombra elegante para dar profundidad */
+}
+
+#aero-video {
+  object-fit: cover;
+  object-position: center center;
+}
+
+.video-overlay {
+  inset: 0;
+  width: auto;
+  height: auto;
+  background: rgba(4, 26, 49, 0.72);
+  z-index: 5;
+  transition: opacity 0.35s ease;
+}
+
+.control-btn {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  /* Fondo casi invisible: negro con solo 15% de opacidad */
+  background: rgba(0, 0, 0, 0.15); 
+  /* Borde casi invisible: blanco con 20% de opacidad */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  color: #ffffff;
+  /* Eliminamos la sombra pesada para que no compita con la transparencia */
+  box-shadow: none; 
+  backdrop-filter: blur(8px); /* Mantenemos el desenfoque para que se lea sobre cualquier fondo */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+  /* Al pasar el mouse, recuperamos un poco de visibilidad para indicar interacción */
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+.center-btn {
+  z-index: 10;
+  width: 60px;
+  height: 60px;
+}
+
+.center-btn svg {
+  width: 38px;
+  height: 38px;
+  margin-left: 4px;
+}
+
+.center-btn:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.mute-btn {
+  top: 22px;
+  right: 22px;
+  z-index: 12;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+}
+
+.mute-btn svg {
+  width: 22px;
+  height: 22px;
+  color: #ffffff;
+}
+
+.mute-btn svg.hidden {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  .fullscreen-video {
+    height: 68vh;
+    min-height: 420px;
+  }
+
+  .mute-btn {
+    top: 16px;
+    right: 16px;
+  }
+}
+
+
+/* --- SECCIÓN DE CONTACTO: FORMATO COMPACTO Y MODERNO --- */
+.contact-section {
+  padding: 60px 5%;
+  background: #041a31;
+  color: white;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 320px 1fr; /* Más espacio al formulario, datos más contenidos */
+  gap: 40px; /* Reducido para mayor cercanía */
+  max-width: 950px; /* Ajustado para que no se vea gigante */
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* Columna de datos (izquierda) */
+.contact-info h2 { font-size: 2rem; margin-bottom: 15px; color: white; }
+.contact-info p { color: #d0d0d0; margin-bottom: 25px; font-size: 0.95rem; }
+.method { margin-bottom: 20px; }
+.method strong { 
+  display: block; 
+  color: #88aaff; 
+  font-size: 0.7rem; 
+  text-transform: uppercase; 
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.method a { color: white; text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+
+/* Tarjeta del formulario (derecha) */
+.contact-form-wrapper {
+  background: white;
+  padding: 30px; /* Más compacto */
+  border-radius: 16px;
+  color: #333;
+}
+
+.contact-form-wrapper h3 { 
+  margin: 0 0 15px 0; 
+  color: #041a31; 
+  font-size: 1.25rem; 
+}
+
+/* Campos del formulario */
+.form-group { margin-bottom: 12px; }
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+  font-size: 0.9rem;
+}
+
+/* Botón */
+.btn-primary {
+  background: #041a31;
+  color: white;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover { background: #0a2d52; }
+
+/* Adaptación móvil */
+@media (max-width: 768px) {
+  .contact-container { grid-template-columns: 1fr; gap: 30px; }
+}
+
+/* Corrección para los botones del Hero */
+.hero-actions {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Asegurar que los botones no ocupen el 100% del ancho */
+.hero-actions .btn {
+  width: auto;
+  min-width: 160px;
 }

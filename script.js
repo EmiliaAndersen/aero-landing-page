@@ -45,3 +45,68 @@ if (rotatingWord) {
     }, 380);
   }, 2000);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const video = document.getElementById("aero-video");
+  const overlay = document.getElementById("video-overlay");
+  const replayBtn = document.getElementById("replay-btn");
+  const muteBtn = document.getElementById("mute-btn");
+  const iconMuted = document.getElementById("icon-muted");
+  const iconUnmuted = document.getElementById("icon-unmuted");
+
+  if (!video || !overlay || !replayBtn || !muteBtn) return;
+
+  const hideReplay = () => {
+    overlay.classList.add("hidden");
+    replayBtn.classList.add("hidden");
+  };
+
+  const showReplay = () => {
+    overlay.classList.remove("hidden");
+    replayBtn.classList.remove("hidden");
+  };
+
+  const syncMuteButton = () => {
+    muteBtn.setAttribute("aria-label", video.muted ? "Activar sonido" : "Silenciar video");
+    iconMuted?.classList.toggle("hidden", !video.muted);
+    iconUnmuted?.classList.toggle("hidden", video.muted);
+  };
+
+  const playVideo = () => {
+    hideReplay();
+    video.play().catch(showReplay);
+  };
+
+  video.pause();
+  syncMuteButton();
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        if (!video.ended && video.paused) {
+          playVideo();
+        }
+        return;
+      }
+
+      if (!video.ended && !video.paused) {
+        video.pause();
+      }
+    },
+    { threshold: 0.45 }
+  );
+
+  observer.observe(video);
+
+  video.addEventListener("ended", showReplay);
+
+  replayBtn.addEventListener("click", () => {
+    video.currentTime = 0;
+    playVideo();
+  });
+
+  muteBtn.addEventListener("click", () => {
+    video.muted = !video.muted;
+    syncMuteButton();
+  });
+});
