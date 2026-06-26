@@ -138,7 +138,7 @@ svg {
 
 .eyebrow {
   margin: 0 0 14px;
-  color: var(--amber);
+  color:rgba(16, 125, 227, 0.88) ;
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.11em;
@@ -1009,7 +1009,7 @@ h3 {
 
 /* Botón */
 .btn-primary {
-  background: #041a31;
+  background: #3a7abe;
   color: white;
   width: 100%;
   padding: 12px;
@@ -1021,7 +1021,7 @@ h3 {
   transition: background 0.3s;
 }
 
-.btn-primary:hover { background: #0a2d52; }
+.btn-primary:hover { background: #3293f973; }
 
 /* Adaptación móvil */
 @media (max-width: 768px) {
