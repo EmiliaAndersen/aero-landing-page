@@ -210,7 +210,7 @@ h3 {
 .value-section,
 .features-section,
 .contact-section {
-  padding: clamp(48px, 6vw, 78px) clamp(42px, 6vw, 96px);
+  padding: clamp(88px, 7vw, 100px) clamp(42px, 6vw, 96px);
 }
 
 .problem-section {
@@ -235,7 +235,7 @@ h3 {
 }
 
 .process-section {
-  background: #ffffff;
+  background: #f7fafc;
   color: var(--ink);
 }
 
@@ -445,7 +445,7 @@ h3 {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0;
-  background: linear-gradient(180deg, #ffffff, #eef6f4);
+  background: #f3f8f5;
 }
 
 .features-section div {
@@ -480,8 +480,8 @@ h3 {
 
 .contact-section {
   display: block;
-  background: var(--primary);
-  color: #ffffff;
+  background: #eef5f8;
+  color: var(--primary-900);
 }
 
 .contact-inner {
@@ -713,8 +713,8 @@ h3 {
   }
 
   .contact-section {
-    padding-top: 46px;
-    padding-bottom: 46px;
+    padding-top: 72px;
+    padding-bottom: 72px;
   }
 
   .contact-copy p {
@@ -846,18 +846,28 @@ h3 {
   width: 100%;
   /* Agregamos padding para crear los márgenes vacíos alrededor */
   padding: 40px 5%; /* 40px arriba/abajo, 5% a los lados */
-  height: 72vh; 
-  background-color: transparent; /* Fondo transparente para que se vea el espacio vacío */
+  height: 66vh; 
+  background-color: #f6f8fa; /* Fondo plano para que se vea el espacio vacío */
   overflow: visible; /* Permitimos que se vea el fondo de la web fuera del video */
+}
+
+.video-eyebrow {
+  max-width: 920px;
+  margin: 0 auto 18px;
+  color: rgba(16, 125, 227, 0.88);
+  text-align: center;
 }
 
 .video-container {
   width: 100%;
+  max-width: 920px;
   height: 100%;
+  margin: 0 auto;
   position: relative;
   border-radius: 24px; /* Bordes redondeados para el toque moderno */
+  border: 1px solid rgba(6, 59, 122, 0.1);
   overflow: hidden; /* Esto mantiene el video contenido dentro de los bordes redondeados */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* Sombra elegante para dar profundidad */
+  box-shadow: 0 18px 42px rgba(4, 40, 82, 0.12); /* Sombra suave para dar profundidad */
 }
 
 #aero-video {
@@ -935,8 +945,8 @@ h3 {
 
 @media (max-width: 640px) {
   .fullscreen-video {
-    height: 68vh;
-    min-height: 420px;
+    height: 58vh;
+    min-height: 360px;
   }
 
   .mute-btn {
@@ -948,40 +958,42 @@ h3 {
 
 /* --- SECCIÓN DE CONTACTO: FORMATO COMPACTO Y MODERNO --- */
 .contact-section {
-  padding: 60px 5%;
-  background: #041a31;
-  color: white;
+  padding: clamp(88px, 7vw, 100px) 5%;
+  background: #eef5f8;
+  color: var(--primary-900);
 }
 
 .contact-container {
   display: grid;
   grid-template-columns: 320px 1fr; /* Más espacio al formulario, datos más contenidos */
   gap: 40px; /* Reducido para mayor cercanía */
-  max-width: 950px; /* Ajustado para que no se vea gigante */
+  max-width: 980px; /* Ajustado para que no se vea gigante */
   margin: 0 auto;
   align-items: start;
 }
 
 /* Columna de datos (izquierda) */
-.contact-info h2 { font-size: 2rem; margin-bottom: 15px; color: white; }
-.contact-info p { color: #d0d0d0; margin-bottom: 25px; font-size: 0.95rem; }
+.contact-info h2 { font-size: 2rem; margin-bottom: 15px; color: var(--primary-900); }
+.contact-info p { color: var(--muted); margin-bottom: 25px; font-size: 0.95rem; }
 .method { margin-bottom: 20px; }
 .method strong { 
   display: block; 
-  color: #88aaff; 
+  color: var(--green); 
   font-size: 0.7rem; 
   text-transform: uppercase; 
   letter-spacing: 0.5px;
   margin-bottom: 4px;
 }
-.method a { color: white; text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+.method a { color: var(--primary-900); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
 
 /* Tarjeta del formulario (derecha) */
 .contact-form-wrapper {
-  background: white;
+  background: #ffffff;
   padding: 30px; /* Más compacto */
-  border-radius: 16px;
-  color: #333;
+  border: 1px solid rgba(6, 59, 122, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 18px 45px rgba(4, 40, 82, 0.08);
+  color: var(--ink);
 }
 
 .contact-form-wrapper h3 { 
@@ -995,10 +1007,18 @@ h3 {
 .form-group input, .form-group textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid #dce6e9;
   border-radius: 8px;
-  background: #f9f9f9;
+  background: #f8fafc;
+  color: var(--ink);
   font-size: 0.9rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(6, 59, 122, 0.12);
 }
 
 /* Botón */
@@ -1015,7 +1035,18 @@ h3 {
   transition: background 0.3s;
 }
 
-.btn-primary:hover { background: #3293f973; }
+.btn-primary:hover { background: var(--primary-900); }
+
+.social-links img {
+  opacity: 0.62;
+  filter: grayscale(1);
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.social-links a:hover img {
+  opacity: 0.9;
+  filter: grayscale(0.4);
+}
 
 /* Adaptación móvil */
 @media (max-width: 768px) {
@@ -1038,8 +1069,8 @@ h3 {
 }
 
 .map-section {
-  padding: 80px 5%;
-  background: #ffffff;
+  padding: clamp(88px, 7vw, 100px) 5%;
+  background: #f8fbfd;
 }
 
 .map-container-grid {
@@ -1072,7 +1103,7 @@ h3 {
 
 
 .tech-section {
-  padding: clamp(48px, 5vw, 70px) clamp(42px, 6vw, 96px);
+  padding: clamp(88px, 7vw, 100px) clamp(42px, 6vw, 96px);
   background: #ffffff;
 }
 
@@ -1154,7 +1185,7 @@ h3 {
 
 @media (max-width: 768px) {
   .tech-section {
-    padding: 46px 20px;
+    padding: 72px 20px;
   }
 
   .tech-container {
@@ -1234,10 +1265,10 @@ h3 {
 
 /* Insight live panel */
 .insight-section {
-  padding: 60px 20px;
+  padding: 72px 20px;
   display: flex;
   justify-content: center;
-  background: #ffffff;
+  background: #f3f8f5;
 }
 
 .insight-container {
