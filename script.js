@@ -23,27 +23,38 @@ nav.addEventListener("click", (event) => {
 });
 
 const rotatingWord = document.querySelector("[data-rotating-word]");
+const insightMetrics = document.querySelectorAll("[data-insight-metric]");
+
 const rotatingWords = [
-  { text: "No es solo un vuelo.", tone: "tone-primary" },
-  { text: "Es un registro.", tone: "tone-blue" },
-  { text: "Es una comparación.", tone: "tone-green" },
-  { text: "Es evidencia.", tone: "tone-amber" },
-  { text: "Es seguimiento.", tone: "tone-primary" },
+  { text: "Todo el proceso en un solo lugar.", metric: 0 },
+  { text: "Cada activo conserva su historial.", metric: 1 },
+  { text: "La información está siempre disponible.", metric: 2 },
+  { text: "Cada hallazgo queda asociado a una inspección.", metric: 3 },
 ];
 
-let rotatingIndex = 0;
+let index = 0;
 
 if (rotatingWord) {
-  window.setInterval(() => {
+  const setInsightState = (activeIndex) => {
+    rotatingWord.textContent = rotatingWords[activeIndex].text;
+
+    insightMetrics.forEach((metric, metricIndex) => {
+      metric.classList.toggle("is-active", metricIndex === rotatingWords[activeIndex].metric);
+    });
+  };
+
+  setInsightState(0);
+
+  setInterval(() => {
     rotatingWord.classList.add("is-changing");
 
-    window.setTimeout(() => {
-      rotatingIndex = (rotatingIndex + 1) % rotatingWords.length;
-      rotatingWord.textContent = rotatingWords[rotatingIndex].text;
-      rotatingWord.className = rotatingWords[rotatingIndex].tone;
+    setTimeout(() => {
+      index = (index + 1) % rotatingWords.length;
+      setInsightState(index);
       rotatingWord.classList.remove("is-changing");
-    }, 380);
-  }, 2000);
+    }, 350);
+
+  }, 2500);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
